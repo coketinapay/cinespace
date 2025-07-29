@@ -10,7 +10,6 @@ Your user-friendly database for shows, movies, and casts
 - [x] Configured SEO at movies directory
 
 ## ❌ - Priority
-
 Movies Directory
 
 - [ ] Discover Page
@@ -18,9 +17,6 @@ Movies Directory
 - [ ] Upcoming Movies Page
 - [ ] Top Rated Movies Page
 - [ ] Now Playing Movies Page
-
-## ❌ - Priority
-
 TV Directory
 
 - [ ] Discover Page
