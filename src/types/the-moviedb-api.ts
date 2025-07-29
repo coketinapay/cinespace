@@ -2,7 +2,7 @@ import { ReviewCardProps } from "@/components/carousel/reviews-carousel";
 
 export type TheMovieDBResponse = {
   page: number;
-  results: TheMovieDBResult[] | ReviewCardProps[];
+  results: TheMovieDBResult[] | ReviewCardProps[] | undefined;
   total_pages: number;
   total_results: number;
 };

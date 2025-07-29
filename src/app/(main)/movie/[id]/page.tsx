@@ -16,10 +16,22 @@ import { getMovieCredits } from "@/services/movie/getMovieCredits";
 import { getMovieSimilarShows } from "@/services/movie/getMovieSimilarShows";
 import { getMovieReviews } from "@/services/movie/getMovieReviews";
 import { Metadata, ResolvingMetadata } from "next";
+import { getPopularMovies } from "@/services/movie/getPopularMovies";
 
 export type MoviePageProps = {
   params: Promise<{ id: string }>;
 };
+
+export async function generateStaticParams() {
+  const fetchMovies = await getPopularMovies();
+  if (!fetchMovies) return [];
+
+  const movieData = fetchMovies.results as TheMovieDBResult[];
+
+  return movieData.map((item) => ({
+    id: item.id.toString(),
+  }));
+}
 
 export async function generateMetadata(
   { params }: MoviePageProps,
@@ -36,6 +48,7 @@ export async function generateMetadata(
   const { title, overview, poster_path } = movieData;
 
   const icon = RESOURCE_PATH.poster(poster_path);
+
   const url =
     process.env.NODE_ENV == "production"
       ? `${process.env.NEXT_PUBLIC_PROD_URL}/movie/${id}`
