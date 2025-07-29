@@ -4,6 +4,9 @@ import { Marquee } from "@/components/magicui/marquee";
 import Image from "next/image";
 import { RenderRatingStar } from "../render-rating-star";
 import CustomTooltip from "../custom-tooltip";
+import remarkBreaks from "remark-breaks";
+import Markdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 export type AuthorDetailsProps = {
   name: string;
@@ -52,7 +55,11 @@ const ReviewCard = ({ author, content, author_details }: ReviewCardProps) => {
           </div>
         </div>
       </div>
-      <blockquote className="mt-2 line-clamp-5 text-sm">{content}</blockquote>
+      <blockquote className="mt-2 line-clamp-5 text-sm">
+        <Markdown
+          remarkPlugins={[remarkGfm, remarkBreaks]}
+        >{`${content}`}</Markdown>
+      </blockquote>
     </figure>
   );
 };

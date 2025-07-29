@@ -35,6 +35,7 @@ export async function generateMetadata(
   const prevImages = parentMetadata.openGraph?.images || [];
   const { title, overview, poster_path } = movieData;
 
+  const icon = RESOURCE_PATH.poster(poster_path);
   const url =
     process.env.NODE_ENV == "production"
       ? `${process.env.NEXT_PUBLIC_PROD_URL}/movie/${id}`
@@ -42,6 +43,14 @@ export async function generateMetadata(
 
   return {
     title: title,
+    icons: {
+      icon: [
+        {
+          url: icon,
+          type: "image/jpeg",
+        },
+      ],
+    },
     description: overview,
     openGraph: {
       title: title,
@@ -49,7 +58,7 @@ export async function generateMetadata(
       description: overview,
       url: url,
       siteName: "Cinespace",
-      images: [RESOURCE_PATH.poster(poster_path)],
+      images: [icon],
       ...prevImages,
     },
     twitter: {

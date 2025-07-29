@@ -3,6 +3,7 @@ import Image from "next/image";
 import { TheMovieDBResult } from "@/types/the-moviedb-api";
 import { formatDate } from "@/utils/format-date";
 import { Badge } from "./ui/badge";
+import { RenderRatingStar } from "./render-rating-star";
 
 export type ShowHeroSectionProps = Pick<
   TheMovieDBResult,
@@ -27,6 +28,7 @@ const ShowHeroSection = ({
 }: ShowHeroSectionProps) => {
   const finalDate = new Date(release_date);
 
+  const roundOffAverage = Math.ceil(vote_average);
   return (
     <div className="flex flex-col sm:flex-row">
       <div className="group relative">
@@ -52,10 +54,10 @@ const ShowHeroSection = ({
           ))}
         </div>
         {vote_count && vote_average && (
-          <div className="ml-5 flex flex-col">
-            <div className="text-custom-black text-sm">
-              {vote_average.toFixed(1)} / 10 from {vote_count} votes
-            </div>
+          <div className="text-custom-black mt-2 flex gap-2">
+            <RenderRatingStar size={20} rating={roundOffAverage} />
+            {roundOffAverage} / 10 from&nbsp;
+            {vote_count} votes
           </div>
         )}
         <p className="mt-3 max-w-prose font-light">{overview}</p>
