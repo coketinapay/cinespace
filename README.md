@@ -1,8 +1,11 @@
-# Cinespace | Your user friendly shows, movies, and casts database.
+# 🎬 Cinespace
 
-## Cinespace features todo
+### Your user-friendly database for shows, movies, and casts
 
-[] Home Page
-[x] Multi Search functionality
-[x] View movie overview, casts, reviews, and similar movies.
-[]
+---
+
+## ✅ Features To-Do
+
+- [ ] Home Page
+- [x] Multi-search functionality
+- [x] View movie overview, cast, reviews, and similar movies
