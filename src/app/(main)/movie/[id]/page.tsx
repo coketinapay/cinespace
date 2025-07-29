@@ -7,7 +7,6 @@ import {
 import { RenderRatingStar } from "@/components/render-rating-star";
 import ShowsCarousel from "@/components/carousel/shows-carousel";
 import ShowHeroSection from "@/components/show-hero-section";
-import { DisplayShowProps } from "@/types/search-types";
 import { TheMovieDBResponse, TheMovieDBResult } from "@/types/the-moviedb-api";
 import { notFound } from "next/navigation";
 import React from "react";
@@ -17,7 +16,7 @@ import { getMovieCredits } from "@/services/movie/getMovieCredits";
 import { getMovieSimilarShows } from "@/services/movie/getMovieSimilarShows";
 import { getMovieReviews } from "@/services/movie/getMovieReviews";
 
-const page = async ({ params }: { params: DisplayShowProps }) => {
+const page = async ({ params }: { params: Promise<{ id: string }> }) => {
   const { id } = await params;
 
   if (!id) return notFound();
