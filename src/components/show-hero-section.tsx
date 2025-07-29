@@ -45,7 +45,7 @@ const ShowHeroSection = ({
         <div className="mt-2 flex flex-col space-y-1 space-x-1 text-sm md:flex-row">
           <Badge className="bg-blue-800">{formatDate(finalDate)}</Badge>
           <Badge className="bg-custom-black">{runtime} minutes</Badge>
-          {genres.map((genre) => (
+          {genres?.map((genre) => (
             <Badge variant="outline" key={genre.id}>
               {genre.name}
             </Badge>

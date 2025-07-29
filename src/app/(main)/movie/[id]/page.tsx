@@ -15,6 +15,49 @@ import { getMovieById } from "@/services/movie/getMovieById";
 import { getMovieCredits } from "@/services/movie/getMovieCredits";
 import { getMovieSimilarShows } from "@/services/movie/getMovieSimilarShows";
 import { getMovieReviews } from "@/services/movie/getMovieReviews";
+import { Metadata, ResolvingMetadata } from "next";
+
+export type MoviePageProps = {
+  params: Promise<{ id: string }>;
+};
+
+export async function generateMetadata(
+  { params }: MoviePageProps,
+  parent: ResolvingMetadata,
+): Promise<Metadata> {
+  const { id } = await params;
+
+  if (!id) return notFound();
+
+  const fetchMovie = await getMovieById(id);
+  const movieData = (await fetchMovie?.json()) as TheMovieDBResult;
+  const parentMetadata = await parent;
+  const prevImages = parentMetadata.openGraph?.images || [];
+  const { title, overview, poster_path } = movieData;
+
+  const url =
+    process.env.NODE_ENV == "production"
+      ? `${process.env.NEXT_PUBLIC_PROD_URL}/movie/${id}`
+      : "http://localhost:3000";
+
+  return {
+    title: title,
+    description: overview,
+    openGraph: {
+      title: title,
+      type: "video.movie",
+      description: overview,
+      url: url,
+      siteName: "Cinespace",
+      images: [RESOURCE_PATH.poster(poster_path)],
+      ...prevImages,
+    },
+    twitter: {
+      card: "summary_large_image",
+      images: [RESOURCE_PATH.poster(poster_path)],
+    },
+  };
+}
 
 const page = async ({ params }: { params: Promise<{ id: string }> }) => {
   const { id } = await params;
@@ -35,6 +78,7 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
 
   const reviewsResponse = (await fetchReviews?.json()) as TheMovieDBResponse;
 
+  console.log(reviewsResponse);
   const reviewsData = reviewsResponse.results as ReviewCardProps[];
 
   const averageVote = Math.round(movieData.vote_average);

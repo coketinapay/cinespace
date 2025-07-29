@@ -5,11 +5,11 @@ export type ApiShowsWrapper = {
 };
 
 export const apiShowsWrapper = ({ baseUrl, next }: ApiShowsWrapper) => {
-  const apiCall = fetch(baseUrl, {
+  const res = fetch(baseUrl, {
     headers: {
       Authorization: `Bearer ${process.env.NEXT_PUBLIC_THEMOVIEDB_API_KEY}`,
     },
     next,
   });
-  return apiCall;
+  return res;
 };
