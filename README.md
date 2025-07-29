@@ -1,6 +1,6 @@
-# 🎬 Cinespace
+# 🎬 Cinespace: Your user-friendly database for shows, movies, and casts
 
-Your user-friendly database for shows, movies, and casts
+
 
 ### ✅ General Objectives
 
