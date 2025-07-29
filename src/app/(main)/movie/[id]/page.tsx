@@ -45,9 +45,12 @@ export async function generateMetadata(
   const movieData = (await fetchMovie?.json()) as TheMovieDBResult;
   const parentMetadata = await parent;
   const prevImages = parentMetadata.openGraph?.images || [];
-  const { title, overview, poster_path } = movieData;
+  const { title, overview, poster_path, backdrop_path } = movieData;
 
-  const icon = RESOURCE_PATH.poster(poster_path);
+  const icon =
+    RESOURCE_PATH.poster(poster_path) ||
+    RESOURCE_PATH.backdrop(backdrop_path) ||
+    "/placeholder.jpg";
 
   const url =
     process.env.NODE_ENV == "production"
@@ -55,7 +58,7 @@ export async function generateMetadata(
       : "http://localhost:3000";
 
   return {
-    title: title,
+    title: `${title} | Cinespace`,
     icons: {
       icon: [
         {
@@ -100,7 +103,6 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
 
   const reviewsResponse = (await fetchReviews?.json()) as TheMovieDBResponse;
 
-  console.log(reviewsResponse);
   const reviewsData = reviewsResponse.results as ReviewCardProps[];
 
   const averageVote = Math.round(movieData.vote_average);

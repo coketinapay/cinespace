@@ -133,7 +133,7 @@ body {
     @apply flex w-full gap-5 overflow-x-auto scroll-smooth;
   }
   .cast-card-img-size {
-    @apply w-[180px];
+    @apply w-[170px];
   }
 
   .content-box-heading {
@@ -145,7 +145,7 @@ body {
   }
 
   .movie-card-img-size {
-    @apply w-[180px];
+    @apply w-[200px];
   }
 
   .content-box {

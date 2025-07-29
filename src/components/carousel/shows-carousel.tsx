@@ -5,6 +5,32 @@ import { Button } from "../ui/button";
 import { ArrowRight } from "lucide-react";
 import { RESOURCE_PATH } from "@/vendors/the-moviedb-api";
 
+export const ShowCard = ({ show }: { show: TheMovieDBResult }) => {
+  return (
+    <figure key={show.id} className="carousel-card movie-card-img-size">
+      <Image
+        src={
+          show.poster_path
+            ? RESOURCE_PATH.poster(show.poster_path)
+            : "/placeholder.jpg"
+        }
+        width={180}
+        height={180}
+        alt={show.original_title}
+        className="object-fit movie-card-img-size h-[180px]"
+        loading="lazy"
+        placeholder="blur"
+        blurDataURL="/loading_img.png"
+        draggable="false"
+      />
+      <div className="mt-1 p-2">
+        <h1 className="text-sm font-medium">{show.title}</h1>
+        <p className="line-clamp-3 text-[0.8rem]">{show.overview}</p>
+      </div>
+    </figure>
+  );
+};
+
 const ShowsCarousel = ({
   similarShows,
 }: {
@@ -19,30 +45,7 @@ const ShowsCarousel = ({
         <div className="flex w-full gap-5 overflow-x-auto scroll-smooth">
           {previewTopShows.map((show, idx) => (
             <Fragment key={show.id}>
-              <figure
-                key={show.id}
-                className="carousel-card movie-card-img-size"
-              >
-                <Image
-                  src={
-                    show.poster_path
-                      ? RESOURCE_PATH.poster(show.poster_path)
-                      : "/placeholder.jpg"
-                  }
-                  width={180}
-                  height={180}
-                  alt={show.original_title}
-                  className="object-fit movie-card-img-size h-[180px]"
-                  loading="lazy"
-                  placeholder="blur"
-                  blurDataURL="/loading_img.png"
-                  draggable="false"
-                />
-                <div className="mt-1 p-2">
-                  <h1 className="text-sm font-medium">{show.title}</h1>
-                  <p className="line-clamp-3 text-[0.8rem]">{show.overview}</p>
-                </div>
-              </figure>
+              <ShowCard show={show} />
               {idx == previewTopShows.length - 1 && (
                 <div className="flex h-[350px] w-[200px] items-center justify-center">
                   <Button variant="link">
