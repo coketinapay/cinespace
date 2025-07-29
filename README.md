@@ -27,4 +27,4 @@ TV Directory
 - [ ] Popular TV Shows Page
 - [ ] Upcoming Shows Page
 - [ ] Top Rated Shows Page
-- [ ] Now Playing Shows Page
+- [ ] Now Playin
