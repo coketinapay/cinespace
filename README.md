@@ -1,5 +1,4 @@
 # 🎬 Cinespace
-
 ### Your user-friendly database for shows, movies, and casts
 
 ---
@@ -12,7 +11,6 @@
 - [x] Configured SEO at movies directory
 
 # ❌ - Priority
-
 ## -- Movies Directory
 
 - [ ] Discover Page
@@ -22,9 +20,7 @@
 - [ ] Now Playing Movies Page
 
 # ❌ - Priority
-
 ## -- TV Directory
-
 - [ ] Discover Page
 - [ ] Popular TV Shows Page
 - [ ] Upcoming Shows Page
