@@ -1,8 +1,10 @@
 # 🎬 Cinespace
 
+
 Your user-friendly database for shows, movies, and casts
 
 ## ✅ General Objectives
+
 
 - [ ] Home Page
 - [x] Multi-search functionality
@@ -10,6 +12,8 @@ Your user-friendly database for shows, movies, and casts
 - [x] Configured SEO at movies directory
 
 ## ❌ - Priority
+
+
 Movies Directory
 
 - [ ] Discover Page
