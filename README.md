@@ -9,7 +9,7 @@ Your user-friendly database for shows, movies, and casts
 - [x] View movie overview, cast, reviews, and similar movies
 - [x] Configured SEO at movies directory
 
-### ❌ - Priority
+### 🚨 - Priority
 
 Movies Directory
 
