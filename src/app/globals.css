@@ -145,7 +145,7 @@ body {
   }
 
   .movie-card-img-size {
-    @apply w-[200px];
+    @apply w-[150px];
   }
 
   .content-box {

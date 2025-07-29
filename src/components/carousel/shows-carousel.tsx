@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Button } from "../ui/button";
 import { ArrowRight } from "lucide-react";
 import { RESOURCE_PATH } from "@/vendors/the-moviedb-api";
+import { formatDate } from "@/utils/format-date";
 
 export const ShowCard = ({ show }: { show: TheMovieDBResult }) => {
   return (
@@ -23,9 +24,9 @@ export const ShowCard = ({ show }: { show: TheMovieDBResult }) => {
         blurDataURL="/loading_img.png"
         draggable="false"
       />
-      <div className="mt-1 p-2">
-        <h1 className="text-sm font-medium">{show.title}</h1>
-        <p className="line-clamp-3 text-[0.8rem]">{show.overview}</p>
+      <div className="mt-1 flex h-auto flex-col justify-between p-2">
+        <h1 className="text-sm font-semibold">{show.title}</h1>
+        <h2>{formatDate(new Date(show.release_date))}</h2>
       </div>
     </figure>
   );

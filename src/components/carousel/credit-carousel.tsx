@@ -55,11 +55,14 @@ const CreditCarousel = ({ id, cast }: CreditsResponse) => {
                 />
                 <div className="flex h-[150px] flex-col justify-between p-2">
                   <div>
-                    <h1 className="font-medium">{person.name}</h1>
-                    <h2 className="text-sm">{person.character}</h2>
+                    <h1 className="font-semibold">{person.name}</h1>
+                    <div className="text-sm">
+                      as&nbsp;
+                      <span className="font-medium">{person.character}</span>
+                    </div>
                   </div>
                 </div>
-                <div className="absolute inset-0 z-50 flex h-[300px] w-[180px] flex-col items-center justify-end rounded-md p-2 opacity-0 transition-all duration-300 ease-in-out group-hover:bg-black/20 group-hover:opacity-100">
+                <div className="absolute inset-0 z-50 flex flex-col items-center justify-end rounded-md p-2 opacity-0 transition-all duration-300 ease-in-out group-hover:bg-black/20 group-hover:opacity-100">
                   <UserCheck2 size={50} color="white" />
                   <span className="line-clamp-1 p-1 text-sm font-bold text-white">
                     {person.gender == 2 ? "View Actor" : "View Actress"}

@@ -39,12 +39,12 @@ const ShowHeroSection = ({
           priority
           draggable="false"
           src={poster_path}
-          className="h-[450px] w-[300px]"
+          className="h-[450px] w-[300px] rounded-md shadow-xl"
         />
       </div>
-      <div aria-label="metadata" className="ml-5 flex flex-col">
+      <div aria-label="metadata" className="mt-3 ml-5 flex flex-col">
         <h1 className="text-2xl font-semibold text-blue-700">{title}</h1>
-        <div className="mt-2 flex flex-col space-y-1 space-x-1 text-sm md:flex-row">
+        <div className="mt-2 flex flex-wrap gap-3 text-sm sm:flex-col md:flex-row">
           <Badge className="bg-blue-800">{formatDate(finalDate)}</Badge>
           <Badge className="bg-custom-black">{runtime} minutes</Badge>
           {genres?.map((genre) => (
@@ -54,13 +54,15 @@ const ShowHeroSection = ({
           ))}
         </div>
         {vote_count && vote_average && (
-          <div className="text-custom-black mt-2 flex gap-2">
-            <RenderRatingStar size={20} rating={roundOffAverage} />
+          <div className="text-custom-black my-3 flex flex-col gap-2">
+            <div className="flex gap-2">
+              <RenderRatingStar size={20} rating={roundOffAverage} />
+            </div>
             {roundOffAverage} / 10 from&nbsp;
             {vote_count} votes
           </div>
         )}
-        <p className="mt-3 max-w-prose font-light">{overview}</p>
+        <p className="mt-3 max-w-prose text-[16px] font-light">{overview}</p>
       </div>
     </div>
   );
