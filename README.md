@@ -1,4 +1,4 @@
-# 🎬 Cinespace: Your user-friendly database for shows, movies, and casts
+## 🎬 Cinespace: Your user-friendly database for shows, movies, and casts
 
 
 
