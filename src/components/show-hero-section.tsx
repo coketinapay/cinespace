@@ -40,7 +40,13 @@ const ShowHeroSection = ({
           className="h-[450px] w-[300px]"
         />
       </div>
-
+      {vote_count && vote_average && (
+        <div className="ml-5 flex flex-col">
+          <p className="text-sm text-gray-500">
+            {vote_average.toFixed(1)} / 10 from {vote_count} votes
+          </p>
+        </div>
+      )}
       <div aria-label="metadata" className="ml-5 flex flex-col">
         <h1 className="text-2xl font-semibold text-blue-700">{title}</h1>
         <div className="mt-2 flex flex-col space-y-1 space-x-1 text-sm md:flex-row">

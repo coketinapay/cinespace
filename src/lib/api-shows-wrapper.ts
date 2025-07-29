@@ -7,7 +7,7 @@ export type ApiShowsWrapper = {
 export const apiShowsWrapper = ({ baseUrl, next }: ApiShowsWrapper) => {
   const apiCall = fetch(baseUrl, {
     headers: {
-      Authorization: `Bearer ${process.env.NEXT_PUBLIC_THEMOVIEDB_API_KEY || process.env.NEXT_PUBLIC_THEMOVIEDB_API_KEY}`,
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_THEMOVIEDB_API_KEY}`,
     },
     next,
   });

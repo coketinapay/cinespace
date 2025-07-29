@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import useFetchTrendingShows from "@/hooks/use-fetch-trending-shows";
 import Link from "next/link";
-import { TheMovieDBResult, TheMovieDBResponse } from "@/types/the-moviedb-api";
+import { TheMovieDBResult } from "@/types/the-moviedb-api";
 import getIconByMediaType from "../../get-icons-by-media-type";
 import toast from "react-hot-toast";
 import { ResultsLoading } from "./results-loading";

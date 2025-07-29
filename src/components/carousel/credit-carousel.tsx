@@ -1,13 +1,7 @@
 import React, { Fragment } from "react";
 import Image from "next/image";
 import { Button } from "../ui/button";
-import {
-  ArrowRight,
-  ClapperboardIcon,
-  Eye,
-  UserCheck2,
-  UserRound,
-} from "lucide-react";
+import { ArrowRight, UserCheck2 } from "lucide-react";
 
 export type CreditsResponse = {
   id: number;
@@ -42,7 +36,7 @@ const CreditCarousel = ({ id, cast }: CreditsResponse) => {
       <div className="relative flex gap-5">
         {cast ? (
           showOnlyPreview?.map((person, idx) => (
-            <Fragment key={idx}>
+            <Fragment key={`${id}${idx}`}>
               <figure className="group carousel-card cast-card-img-size">
                 <Image
                   src={
