@@ -1,0 +1,1 @@
+export const SHOW_REVIEW_CAST_CACHELIFE = 1000 * 60 * 60 * 24;
