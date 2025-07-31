@@ -12,34 +12,14 @@ import PaginationButtons from "@/components/pagination-buttons";
 import { TheMovieDBResponse, TheMovieDBResult } from "@/types/the-moviedb-api";
 import { RESOURCE_PATH } from "@/vendors/the-moviedb-api";
 import { RenderRatingStar } from "@/components/render-rating-star";
-export type SortOrder = "asc" | "desc";
+import { validSortObjects, ValidSortTypes } from "./_constants";
+import { Metadata } from "next";
 
-export const sortOrder = ["asc", "desc"];
-
-export const validSortObjects = [
-  { name: "Original Title (Ascending)", value: "original_title.asc" },
-  { name: "Original Title (Descending)", value: "original_title.desc" },
-  { name: "Popularity (Ascending)", value: "popularity.asc" },
-  { name: "Popularity (Descending)", value: "popularity.desc" },
-  { name: "Revenue (Ascending)", value: "revenue.asc" },
-  { name: "Revenue (Descending)", value: "revenue.desc" },
-  {
-    name: "Primary Release Date (Ascending)",
-    value: "primary_release_date.asc",
-  },
-  { name: "Title (Ascending)", value: "title.asc" },
-  { name: "Title (Descending)", value: "title.desc" },
-  {
-    name: "Primary Release Date (Descending)",
-    value: "primary_release_date.desc",
-  },
-  { name: "Vote Average (Ascending)", value: "vote_average.asc" },
-  { name: "Vote Average (Descending)", value: "vote_average.desc" },
-  { name: "Vote Count (Ascending)", value: "vote_count.asc" },
-  { name: "Vote Count (Descending)", value: "vote_count.desc" },
-];
-
-export type ValidSortTypes = (typeof validSortObjects)[number]["value"];
+export const metadata: Metadata = {
+  title: "Discover Movies | Cinespace",
+  description:
+    "Explore a curated mix of trending, top rated, and upcoming movies",
+};
 
 const isValidSort = (sort_by: string) => {
   return validSortObjects.some((sort) => sort.value === sort_by);
@@ -51,7 +31,11 @@ export type MovieSearchParams = {
   include_adult: string;
 };
 
-const page = async ({ searchParams }: { searchParams: MovieSearchParams }) => {
+const page = async ({
+  searchParams,
+}: {
+  searchParams: Promise<MovieSearchParams>;
+}) => {
   const props = await searchParams;
 
   if (!props.page || !props.sort_by || !props.include_adult) return notFound();

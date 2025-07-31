@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useUrlBuilder } from "@/hooks/use-url-buider";
-import { validSortObjects, ValidSortTypes } from "./page";
+import { validSortObjects, ValidSortTypes } from "./_constants";
 
 import {
   Select,
