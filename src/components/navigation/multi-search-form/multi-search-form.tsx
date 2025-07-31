@@ -77,7 +77,7 @@ const MultiSearchForm = () => {
 
   return (
     <>
-      <div className="relative z-10">
+      <div className="relative">
         <input
           aria-disabled={isSearchResultsFetching}
           ref={inputRef}

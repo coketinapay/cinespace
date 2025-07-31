@@ -1,3 +1,5 @@
+import { UrlBuilder } from "@/app/(main)/movie/discover/_movie-filter-box";
+
 export type MovieIdProp = string;
 export type PosterPathProp = string;
 export type BackdropPathProp = string;
@@ -15,6 +17,8 @@ export const MOVIES_API = {
       `https://api.themoviedb.org/3/movie/${movie_id}`,
     popular_movies: () =>
       `https://api.themoviedb.org/3/movie/popular?language=en-US&page=1`,
+    movie_discover: ({ include_adult, page, sort_by }: UrlBuilder) =>
+      `https://api.themoviedb.org/3/discover/movie?include_adult=${include_adult}&include_video=false&language=en-US&page=${page}&sort_by=${sort_by}`,
   },
   update: {},
   delete: {},

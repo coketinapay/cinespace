@@ -144,6 +144,10 @@ body {
     @apply relative h-[220px] w-[350px] cursor-pointer overflow-hidden rounded-xl border p-4;
   }
 
+  .filter-box {
+    @apply w-[350px] rounded-md border bg-white p-2 shadow-sm;
+  }
+
   .movie-card-img-size {
     @apply w-[150px];
   }
@@ -189,9 +193,9 @@ body {
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border outline-ring/50 scroll-smooth;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground scroll-smooth;
   }
 }

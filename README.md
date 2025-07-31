@@ -13,7 +13,7 @@
 
 Movies Directory
 
-- [ ] Discover Page
+- [x] Discover Page
 - [ ] Popular Movies Page
 - [ ] Upcoming Movies Page
 - [ ] Top Rated Movies Page
