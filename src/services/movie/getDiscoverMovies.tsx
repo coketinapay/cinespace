@@ -4,9 +4,9 @@ import { SHOW_REVIEW_CAST_CACHELIFE } from "@/constants/cache";
 import { UrlBuilder } from "@/app/(main)/movie/discover/_movie-filter-box";
 
 export const getMovieDiscover = async ({
-  sort_by,
-  page,
-  include_adult,
+  sort_by = "popularity.desc",
+  page = "1",
+  include_adult = "false",
 }: UrlBuilder) => {
   try {
     const fetchMovieDiscover = await apiShowsWrapper({

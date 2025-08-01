@@ -40,23 +40,29 @@ const PaginationButtons = ({
           </>
         )}
         {/*Generate 5 - Previous Buttons */}
-        {current_page > 5 && (
+        {current_page >= 2 && (
           <>
-            {buttonArray.map((_, idx) => (
-              <Button
-                onClick={() =>
-                  router.push(
-                    constructUrl({
-                      page: `${current_page - MAX_BUTTON_LENGTH + idx}`,
-                    }),
-                  )
-                }
-                variant="outline"
-                key={idx}
-              >
-                {current_page - MAX_BUTTON_LENGTH + idx}
-              </Button>
-            ))}
+            {buttonArray.map((_, idx) => {
+              const pageNumber = current_page - MAX_BUTTON_LENGTH + idx;
+
+              if (pageNumber <= 0) return null; // Skip invalid pages
+
+              return (
+                <Button
+                  onClick={() =>
+                    router.push(
+                      constructUrl({
+                        page: `${pageNumber}`,
+                      }),
+                    )
+                  }
+                  variant="outline"
+                  key={idx}
+                >
+                  {pageNumber}
+                </Button>
+              );
+            })}
           </>
         )}
         {/*Generate 5 - Previous Buttons */}
@@ -66,26 +72,35 @@ const PaginationButtons = ({
         {/* Current Page */}
 
         {/* Generate + 5 pages button */}
-        {current_page <= MAX_PAGE - MAX_BUTTON_LENGTH && (
+        {current_page <= MAX_PAGE - 3 && (
           <>
-            {buttonArray.map((_, idx) => (
-              <Button
-                onClick={() =>
-                  router.push(
-                    constructUrl({ page: `${current_page + 1 + idx}` }),
-                  )
-                }
-                key={idx}
-              >
-                {current_page + 1 + idx}
-              </Button>
-            ))}
+            {buttonArray.map((_, idx) => {
+              const pageNumber = current_page + idx;
+
+              if (pageNumber == current_page) return;
+
+              return (
+                <Button
+                  onClick={() =>
+                    router.push(
+                      constructUrl({
+                        page: `${pageNumber}`,
+                      }),
+                    )
+                  }
+                  variant="outline"
+                  key={idx}
+                >
+                  {pageNumber}
+                </Button>
+              );
+            })}
           </>
         )}
         {/* Generate + 5 pages button */}
 
         {/* Page Jumper to max end */}
-        {current_page < MAX_PAGE - MAX_BUTTON_LENGTH && (
+        {current_page <= MAX_PAGE - MAX_BUTTON_LENGTH && (
           <>
             ...
             <Button

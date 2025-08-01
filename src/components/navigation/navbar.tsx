@@ -2,7 +2,7 @@ import DisplayNavLinks from "./display-nav-links";
 import { PanelsTopLeftIcon } from "lucide-react";
 import MobileNav from "./mobile-nav";
 import MultiSearchForm from "./multi-search-form/multi-search-form";
-
+import Link from "next/link";
 const Navbar = () => {
   return (
     <nav className="sticky top-0 z-10">
@@ -12,9 +12,11 @@ const Navbar = () => {
             <PanelsTopLeftIcon />
           </MobileNav>
         </div>
-        <h1 className="text-gradient animate-fade-up animate-duration-500 text-3xl">
-          cinespace
-        </h1>
+        <Link href="/">
+          <h1 className="text-gradient animate-fade-up animate-duration-500 text-3xl">
+            cinespace
+          </h1>
+        </Link>
         <div className="z-30 hidden lg:relative lg:block">
           <DisplayNavLinks />
         </div>

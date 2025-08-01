@@ -90,11 +90,8 @@ const page = async ({
           </div>
         </div>
       </div>
-      <div className="show-container mt-0 flex gap-x-2">
-        <MovieFilterBox
-          sort_by={props.sort_by}
-          include_adult={props.include_adult}
-        />
+      <div className="show-container mt-0 flex flex-col gap-x-2 sm:flex-row">
+        <MovieFilterBox include_adult={props.include_adult} />
 
         <div id="movies-box" className="content-box w-[100%] scroll-mt-20">
           <div className="flex items-center justify-center gap-x-1">
@@ -103,6 +100,9 @@ const page = async ({
               MAX_PAGE={MAX_PAGE}
             />
           </div>
+          <h1 className="my-2 text-lg font-medium">
+            Displaying ({fetchMovieData.results?.length}) results
+          </h1>
           {result.map((item) => (
             <div key={item.id} className="content-box mt-3 flex space-x-3">
               <Image
@@ -120,7 +120,8 @@ const page = async ({
                 <div className="mt-2 flex items-center gap-x-1">
                   <RenderRatingStar rating={item.vote_average} size={12} />
                   <p className="flex items-center justify-center text-sm">
-                    {Math.round(item.vote_average)}
+                    {!Number.isNaN(item.vote_average) &&
+                      Math.round(item.vote_average)}
                   </p>
                 </div>
               </div>

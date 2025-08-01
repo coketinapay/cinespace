@@ -21,7 +21,7 @@ export const navLinks: NavLinksBase[] = [
       {
         Icon: Layers,
         name: "Discover Movies",
-        path: "/movie/discover?page=1&sort_by=popularity.asc&include_adult=false",
+        path: "/movie/discover?page=1&sort_by=popularity.desc&include_adult=false",
         description:
           "Explore a curated mix of trending, top rated, and upcoming movies",
       },

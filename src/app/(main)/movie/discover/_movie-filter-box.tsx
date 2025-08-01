@@ -13,12 +13,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 import { usePathname, useRouter } from "next/navigation";
 
 export type UrlBuilder = {
@@ -29,12 +23,11 @@ export type UrlBuilder = {
 
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
+import { capitalizeFirstCharOfStr } from "@/utils/capitalizeFirstCharOfStr";
 
 const MovieFilterBox = ({
-  sort_by,
   include_adult,
 }: {
-  sort_by: ValidSortTypes;
   include_adult: "true" | "false";
 }) => {
   const { constructUrl } = useUrlBuilder();
@@ -47,34 +40,26 @@ const MovieFilterBox = ({
   return (
     <div className="flex flex-col gap-y-3">
       <div className="content-box w-[350px]">
-        <Accordion className="h-[100px]" type="multiple">
-          <AccordionItem value="filter">
-            <AccordionTrigger>
-              <h1>Sort by:</h1>
-            </AccordionTrigger>
-            <AccordionContent>
-              <Select
-                onValueChange={(e) => router.push(constructUrl({ sort_by: e }))}
-              >
-                <SelectTrigger className="w-[100%]">
-                  <SelectValue placeholder={sort_by}>{sort_by}</SelectValue>
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectGroup>
-                    {validSortObjects.map((item) => (
-                      <SelectItem key={item.name} value={item.value}>
-                        {item.name}
-                      </SelectItem>
-                    ))}
-                  </SelectGroup>
-                </SelectContent>
-              </Select>
-            </AccordionContent>
-          </AccordionItem>
-        </Accordion>
+        <h1 className="my-2 font-medium">Sort Movies</h1>
+        <Select
+          onValueChange={(e) => router.push(constructUrl({ sort_by: e }))}
+        >
+          <SelectTrigger className="w-[100%]">
+            <SelectValue placeholder="Select sorting type" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectGroup>
+              {validSortObjects.map((item) => (
+                <SelectItem key={item.name} value={item.value}>
+                  {item.name}
+                </SelectItem>
+              ))}
+            </SelectGroup>
+          </SelectContent>
+        </Select>
       </div>
       <div className="content-box">
-        <h1>Include Adult</h1>
+        <h1 className="my-2 font-medium">Include Adult Content</h1>
         <div className="mt-2 flex items-center space-x-2">
           <Switch
             checked={include_adult === "true"}
@@ -86,7 +71,9 @@ const MovieFilterBox = ({
               )
             }
           />
-          <Label htmlFor="include-adult">{include_adult}</Label>
+          <Label htmlFor="include-adult">
+            {capitalizeFirstCharOfStr(include_adult)}
+          </Label>
         </div>
       </div>
     </div>
