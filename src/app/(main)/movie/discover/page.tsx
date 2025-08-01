@@ -20,7 +20,6 @@ export const metadata: Metadata = {
   description:
     "Explore a curated mix of trending, top rated, and upcoming movies",
 };
-
 const isValidSort = (sort_by: string) => {
   return validSortObjects.some((sort) => sort.value === sort_by);
 };
@@ -30,7 +29,6 @@ export type MovieSearchParams = {
   sort_by: ValidSortTypes;
   include_adult: string;
 };
-
 const page = async ({
   searchParams,
 }: {

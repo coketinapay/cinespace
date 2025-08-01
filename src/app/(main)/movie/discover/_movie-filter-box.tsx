@@ -38,7 +38,7 @@ const MovieFilterBox = ({
   console.log(pathname);
 
   return (
-    <div className="flex flex-col gap-y-3">
+    <div className="m-1 flex flex-col gap-y-3">
       <div className="content-box w-[350px]">
         <h1 className="my-2 font-medium">Sort Movies</h1>
         <Select
